@@ -3,13 +3,23 @@ on:
   push:
   workflow_dispatch:
 jobs:
-  build:
-    strategy:
-      matrix:
-        on:
-          - [self-hosted, nomadtools]
-          - [ubuntu-latest]
-    runs-on: ${matrix.on}
+
+  ubuntu-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache Vagrant boxes
+        uses: actions/cache@v2
+        with:
+          path: ~/.vagrant.d/boxes
+          key: ${{ runner.os }}-vagrant-${{ hashFiles('Vagrantfile') }}
+          restore-keys: |
+            ${{ runner.os }}-vagrant-
+      - run: vagrant --version
+      - run: vagrant up
+
+  nomadtools:
+    runs-on: [self-hosted, nomadtools]
     steps:
       - uses: actions/checkout@v4
       - name: Cache Vagrant boxes
