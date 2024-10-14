@@ -7,5 +7,5 @@ jobs:
       - uses: actions/checkout@v4
       - run: echo Hello, world!
       - run: docker version
-      - run: docker run -ti --rm alpine echo hello world
+      - run: docker run --rm alpine echo hello world
       - run: sleep 60
