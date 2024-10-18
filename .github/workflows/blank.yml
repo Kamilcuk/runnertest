@@ -6,7 +6,6 @@ jobs:
       fail-fast: false
       matrix:
         image: [ubuntu, alpine, archlinux]
-        times: [1, 2, 3]
     continue-on-error: true
     runs-on: nomadtools mem=1000
     steps:
@@ -18,7 +17,6 @@ jobs:
       fail-fast: false
       matrix:
         image: [ubuntu, alpine, archlinux]
-        times: [1, 2, 3]
     continue-on-error: true
     runs-on: nomadtools mem=2000
     steps:
@@ -30,7 +28,6 @@ jobs:
       fail-fast: false
       matrix:
         image: [ubuntu, alpine, archlinux]
-        times: [1, 2, 3]
     continue-on-error: true
     runs-on: nomadtools mem=3000
     steps:
@@ -41,7 +38,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        times: [1, 2, 3]
         python: ['3.10', '3.11', '3.12', '3.13']
     continue-on-error: true
     runs-on: nomadtools mem=1000
@@ -57,7 +53,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        times: [1, 2, 3]
         python: ['3.10', '3.11', '3.12', '3.13']
     continue-on-error: true
     runs-on: nomadtools mem=2000
@@ -73,7 +68,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        times: [1, 2, 3]
         python: ['3.10', '3.11', '3.12', '3.13']
     continue-on-error: true
     runs-on: nomadtools mem=3000
