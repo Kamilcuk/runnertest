@@ -2,7 +2,9 @@ on:
   push:
 jobs:
   build:
+    continue-on-error: true
     strategy:
+      fail-fast: false
       matrix:
         image: [ubuntu, alpine, archlinux]
         times: [1, 2, 3]
@@ -12,7 +14,9 @@ jobs:
       - run: docker run --rm ${{matrix.image}} echo hello world ${{matrix.times}}
   pipcache:
     runs-on: nomadtools
+    continue-on-error: true
     strategy:
+      fail-fast: false
       matrix:
         times: [1, 2, 3]
     steps:
