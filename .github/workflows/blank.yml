@@ -9,14 +9,14 @@ jobs:
     runs-on: nomadtools mem=1024 memmax=1234 cpu=100
     steps:
       - uses: actions/checkout@v4
-      - run: docker run --rm ${matrix.image} echo hello world ${matrix.times}
+      - run: docker run --rm ${{matrix.image}} echo hello world ${{matrix.times}}
   pipcache:
     runs-on: nomadtools
     strategy:
       matrix:
         times: [1, 2, 3]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
