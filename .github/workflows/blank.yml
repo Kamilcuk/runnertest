@@ -1,25 +1,50 @@
 on:
   push:
 jobs:
-  build:
+  build1G:
     strategy:
       fail-fast: false
       matrix:
         image: [ubuntu, alpine, archlinux]
         times: [1, 2, 3]
     continue-on-error: true
-    runs-on: nomadtools mem=${matrix.times}024
+    runs-on: nomadtools mem=1000
     steps:
       - uses: actions/checkout@v4
       - run: docker run --rm ${{matrix.image}} echo hello world ${{matrix.times}}
-  pipcache:
+      - run: sleep $((RANDOM % 200))
+  build2G:
+    strategy:
+      fail-fast: false
+      matrix:
+        image: [ubuntu, alpine, archlinux]
+        times: [1, 2, 3]
+    continue-on-error: true
+    runs-on: nomadtools mem=2000
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker run --rm ${{matrix.image}} echo hello world ${{matrix.times}}
+      - run: sleep $((RANDOM % 200))
+  build3G:
+    strategy:
+      fail-fast: false
+      matrix:
+        image: [ubuntu, alpine, archlinux]
+        times: [1, 2, 3]
+    continue-on-error: true
+    runs-on: nomadtools mem=3000
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker run --rm ${{matrix.image}} echo hello world ${{matrix.times}}
+      - run: sleep $((RANDOM % 200))
+  pipcache1G:
     strategy:
       fail-fast: false
       matrix:
         times: [1, 2, 3]
         python: ['3.10', '3.11', '3.12', '3.13']
     continue-on-error: true
-    runs-on: nomadtools mem=${matrix.times}${matrix.times}${matrix.times}0
+    runs-on: nomadtools mem=1000
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -27,3 +52,36 @@ jobs:
           python-version: ${{matrix.python}}
           cache: 'pip'
       - run: pip install pandas
+      - run: sleep $((RANDOM % 200))
+  pipcache2G:
+    strategy:
+      fail-fast: false
+      matrix:
+        times: [1, 2, 3]
+        python: ['3.10', '3.11', '3.12', '3.13']
+    continue-on-error: true
+    runs-on: nomadtools mem=2000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{matrix.python}}
+          cache: 'pip'
+      - run: pip install pandas
+      - run: sleep $((RANDOM % 200))
+  pipcache3G:
+    strategy:
+      fail-fast: false
+      matrix:
+        times: [1, 2, 3]
+        python: ['3.10', '3.11', '3.12', '3.13']
+    continue-on-error: true
+    runs-on: nomadtools mem=3000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{matrix.python}}
+          cache: 'pip'
+      - run: pip install pandas
+      - run: sleep $((RANDOM % 200))
