@@ -19,10 +19,11 @@ jobs:
       fail-fast: false
       matrix:
         times: [1, 2, 3]
+        python: [3.10, 3.11, 3.12, 3.13]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: ${{matrix.python}}
           cache: 'pip'
       - run: pip install pandas
