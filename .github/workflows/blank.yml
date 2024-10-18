@@ -9,6 +9,7 @@ jobs:
     continue-on-error: true
     runs-on: nomadtools mem=1000
     steps:
+      - run: id
       - uses: actions/checkout@v4
       - run: docker info
       - run: stat /var/lib/docker
