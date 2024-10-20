@@ -9,6 +9,8 @@ jobs:
     runs-on: nomadtools
     steps:
       - uses: actions/setup-node@v4
+        with:
+          node-version: 18
       - uses: creyD/prettier_action@v4.3
   # build1G:
   #   strategy:
