@@ -1,6 +1,16 @@
 on:
   push:
 jobs:
+  tester1:
+    steps:
+      runs-on: nomadtools
+      steps:
+        - uses: gruntwork-io/terragrunt-action@v2
+  tester2:
+    steps:
+      runs-on: nomadtools
+      steps:
+        - uses: creyD/prettier_action@v4.3
   build1G:
     strategy:
       fail-fast: false
