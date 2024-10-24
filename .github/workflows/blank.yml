@@ -1,5 +1,6 @@
 on:
   push:
+  pull_request:
 jobs:
   build1G:
     runs-on: nomadtools mem=1000
