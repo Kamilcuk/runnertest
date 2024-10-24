@@ -6,6 +6,7 @@ jobs:
     runs-on: nomadtools mem=1000
     steps:
       - run: removing everything
+      - run: removing everything2
       - run: id
       - uses: actions/checkout@v4
       - run: docker info
